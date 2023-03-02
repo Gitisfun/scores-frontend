@@ -6,12 +6,7 @@
         {{ address }}
       </div>
     </div>
-    <IconWithHover
-      @iconClick="copyTextToClipboard"
-      icon="bx:copy"
-      width="25"
-      height="25"
-    />
+    <IconWithHover @iconClick="copyTextToClipboard" icon="bx:copy" width="25" height="25" />
     <!-- <Icon
       style="cursor: pointer"
       @mouseover="onHover"

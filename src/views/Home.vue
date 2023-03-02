@@ -1,6 +1,6 @@
 <template>
   <Header title="KAVVV VB&OV Scores" />
-  <DateContainer />
+  <DateContainer v-if="!isLoading" />
   <div v-if="schedule.length > 0 && !isLoading">
     <div>
       <FavoritesHeader />
@@ -27,6 +27,7 @@ import { getFavoritesFromCache, storeDatesInCache } from "../logic/cache";
 import FavoritesHeader from "../components/atom/FavoritesHeader.vue";
 import NoFavoritesInfo from "../components/atom/NoFavoritesInfo.vue";
 import Divider from "../components/atom/Divider.vue";
+import Loader from "../components/atom/Loader.vue";
 
 export default {
   name: "Home",
@@ -38,6 +39,7 @@ export default {
     FavoritesHeader,
     NoFavoritesInfo,
     Divider,
+    Loader,
   },
   data() {
     return {
@@ -73,12 +75,7 @@ export default {
     }),
   },
   methods: {
-    ...mapActions(useScoresStore, [
-      "setSchedule",
-      "setScheduleIndex",
-      "setDates",
-      "setFavorites",
-    ]),
+    ...mapActions(useScoresStore, ["setSchedule", "setScheduleIndex", "setDates", "setFavorites"]),
   },
 };
 </script>
